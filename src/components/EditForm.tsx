@@ -11,6 +11,15 @@ export default function EditForm({ item, index, updateTaskItem }: EditFormProps)
 	const [editItem, setEditItem] = useState<TaskItemDto>(item)
 	let now = new Date()
 
+	function handleClick() {
+		if (editItem.title === "" || editItem.description === "") {
+			alert("Missing data")
+			return
+		}
+		updateTaskItem(editItem)
+	}
+
+
 	return (
 		<div key={index} className='task-card'>
 			<div className='task-body'>
@@ -43,7 +52,7 @@ export default function EditForm({ item, index, updateTaskItem }: EditFormProps)
 					required
 					onChange={(e: any) => setEditItem({ ...editItem, due: e.target.value })}
 				/>
-				<button onClick={() => updateTaskItem(editItem)}>Save</button>
+				<button onClick={() => handleClick()}>Save</button>
 			</div>
 		</div>
 	)

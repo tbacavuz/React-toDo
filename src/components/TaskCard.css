@@ -46,13 +46,6 @@
 	background-color: aquamarine;
 }
 
-form {
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
-	gap: 0.2rem;
-}
-
 p,
 h4 {
 	margin: 0;

@@ -17,18 +17,17 @@ export default function TaskForm({ AddTaskItem }: TaskFormProps) {
 	}
 	const [newTaskItem, setNewTaskItem] = useState<TaskItemDto>(emptyTaskItem)
 
-	function handleClick(e: any) {
-		e.preventDefault()
-		// if (newTaskItem === emptyTaskItem) {
-		// 	alert("Missing data")
-		// 	return
-		// }
+	function handleClick() {
+		if (newTaskItem.title === "" || newTaskItem.description === "") {
+			alert("Missing data")
+			return
+		}
 		AddTaskItem(newTaskItem)
 		setNewTaskItem(emptyTaskItem)
 	}
 
 	return (
-		<form className='task-card new'>
+		<div className='task-card new'>
 			<div className='task-body'>
 				<textarea
 					rows={1}
@@ -60,8 +59,8 @@ export default function TaskForm({ AddTaskItem }: TaskFormProps) {
 					required
 					onChange={(e: any) => setNewTaskItem({ ...newTaskItem, due: e.target.value })}
 				/>
-				<button onClick={(e: any) => handleClick(e)}>Create</button>
+				<button onClick={() => handleClick()}>Create</button>
 			</div>
-		</form>
+		</div>
 	)
 }
