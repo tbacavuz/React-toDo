@@ -9,7 +9,6 @@ export default function App() {
 	const [list, setList] = useState<TaskItemDto[]>([])
 
 	function AddTaskItem(newItem: TaskItemDto) {
-		//const newItem = { ...item }
 		newItem.id = nanoid()
 		setList((current) => [...current, newItem])
 	}
@@ -19,7 +18,6 @@ export default function App() {
 	}
 
 	function updateTaskItem(updatedItem: TaskItemDto) {
-		// const updateItem = { ...updatedItem }
 		setList((current) => {
 			return current.map((item) => {
 				if (item.id === updatedItem.id) {
