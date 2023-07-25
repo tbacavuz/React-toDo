@@ -14,17 +14,13 @@ export default function TaskCard({ item, index, deleteTaskItem, toggleEditable }
 		<div key={index} className='task-card'>
 			<div className='task-body'>
 				<h4 className='title'>{item.title}</h4>
-				<p className='description'>{item.description}</p>
+				<p>{item.description}</p>
 			</div>
 			<div className='task-footer'>
 				<p>Due: {moment(item.due).format("DD-MM-YYYY")}</p>
 				<div className='buttons'>
-					<button className='edit-btn' onClick={() => toggleEditable(item.id)}>
-						Edit
-					</button>
-					<button className='delete-btn' onClick={() => deleteTaskItem(item.id)}>
-						Delete
-					</button>
+					<button onClick={() => toggleEditable(item.id)}>Edit</button>
+					<button onClick={() => deleteTaskItem(item.id)}>Delete</button>
 				</div>
 			</div>
 		</div>

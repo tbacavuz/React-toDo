@@ -1,5 +1,4 @@
 import { useState } from "react"
-import "./App.css"
 import TaskList from "./components/TaskList"
 import TaskItemDto from "./Dtos/TaskItemDto"
 import TaskForm from "./components/TaskForm"

@@ -8,17 +8,9 @@ body {
 	background-color: lightgrey;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
 .cards {
 	display: flex;
 	gap: 1rem;
 	flex-direction: row;
 	flex-wrap: wrap;
-}
-
-p,
-h4 {
-	margin: 0;
 }

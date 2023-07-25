@@ -12,7 +12,7 @@ export default function EditForm({ item, index, updateTaskItem }: EditFormProps)
 	let now = new Date()
 
 	return (
-		<div key={index} className='task-card editable'>
+		<div key={index} className='task-card'>
 			<div className='task-body'>
 				<textarea
 					rows={1}
@@ -21,6 +21,7 @@ export default function EditForm({ item, index, updateTaskItem }: EditFormProps)
 					defaultValue={item.title}
 					maxLength={20}
 					required
+					className='title'
 					onChange={(e: any) => setEditItem({ ...editItem, title: e.target.value })}
 				></textarea>
 				<textarea
@@ -33,7 +34,7 @@ export default function EditForm({ item, index, updateTaskItem }: EditFormProps)
 					onChange={(e: any) => setEditItem({ ...editItem, description: e.target.value })}
 				></textarea>
 			</div>
-			<div className='task-footer-editable'>
+			<div className='task-footer'>
 				<input
 					type='date'
 					value={moment(editItem.due).format("YYYY-MM-DD")}
@@ -42,9 +43,7 @@ export default function EditForm({ item, index, updateTaskItem }: EditFormProps)
 					required
 					onChange={(e: any) => setEditItem({ ...editItem, due: e.target.value })}
 				/>
-				<button className='save' onClick={() => updateTaskItem(editItem)}>
-					Save
-				</button>
+				<button onClick={() => updateTaskItem(editItem)}>Save</button>
 			</div>
 		</div>
 	)
