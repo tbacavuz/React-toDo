@@ -16,11 +16,8 @@ export default function TaskForm({ AddTaskItem }: TaskFormProps) {
 		editable: false,
 	})
 
-	useEffect(() => {
-		console.log("newTaskItem", newTaskItem)
-	}, [newTaskItem])
-
-	function handleClick() {
+	function handleClick(e: any) {
+		e.preventDefault()
 		AddTaskItem(newTaskItem)
 		setNewTaskItem({
 			id: "",
@@ -33,26 +30,31 @@ export default function TaskForm({ AddTaskItem }: TaskFormProps) {
 
 	return (
 		<div className='task-card new'>
-			<div className='task-body'>
-				<textarea
-					rows={8}
-					cols={10}
-					placeholder='Add a title...'
-					defaultValue={""}
-					maxLength={50}
-					required
-					onChange={(e: any) => setNewTaskItem({ ...newTaskItem, title: e.target.value })}
-				></textarea>
-				<textarea
-					rows={8}
-					cols={10}
-					placeholder='Add a description...'
-					defaultValue={""}
-					maxLength={200}
-					required
-					onChange={(e: any) => setNewTaskItem({ ...newTaskItem, description: e.target.value })}
-				></textarea>
-				<div className='task-footer-editable'>
+			<form>
+				<div className='task-body'>
+					<textarea
+						rows={1}
+						cols={10}
+						placeholder='Add a title...'
+						defaultValue={""}
+						value={newTaskItem.title}
+						maxLength={20}
+						required
+						className='form-title'
+						onChange={(e: any) => setNewTaskItem({ ...newTaskItem, title: e.target.value })}
+					></textarea>
+					<textarea
+						rows={8}
+						cols={10}
+						placeholder='Add a description...'
+						defaultValue={""}
+						value={newTaskItem.description}
+						maxLength={150}
+						required
+						onChange={(e: any) => setNewTaskItem({ ...newTaskItem, description: e.target.value })}
+					></textarea>
+				</div>
+				<div className='task-footer'>
 					<input
 						type='date'
 						value={moment(newTaskItem.due).format("YYYY-MM-DD")}
@@ -60,11 +62,11 @@ export default function TaskForm({ AddTaskItem }: TaskFormProps) {
 						required
 						onChange={(e: any) => setNewTaskItem({ ...newTaskItem, due: e.target.value })}
 					/>
-					<button className='save' onClick={() => handleClick()}>
+					<button className='save' onClick={(e: any) => handleClick(e)}>
 						Create
 					</button>
 				</div>
-			</div>
+			</form>
 		</div>
 	)
 }

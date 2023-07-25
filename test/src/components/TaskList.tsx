@@ -11,17 +11,13 @@ interface TaskListProps {
 }
 
 export default function TaskList({ list, deleteTaskItem, updateTaskItem, toggleEditable }: TaskListProps) {
-    useEffect(() => {
-        console.log(list)
-    },[list])
-
 	return (
-		<div className='tasks-container'>
+        <>
 			{list.map((item, index) =>
 				item.editable 
                 ? <EditForm item={item} index={index} updateTaskItem={updateTaskItem} />
 				: <TaskCard item={item} index={index} deleteTaskItem={deleteTaskItem} toggleEditable={toggleEditable} />
 			)}
-		</div>
+		</>
 	)
 }

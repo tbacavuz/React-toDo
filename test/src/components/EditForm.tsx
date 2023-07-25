@@ -13,14 +13,13 @@ export default function EditForm({ item, index, updateTaskItem }: EditFormProps)
 
 	return (
 		<div key={index} className='task-card editable'>
-			<span>{editItem.id}</span>
-			<div className='task-body-editable'>
+			<div className='task-body'>
 				<textarea
-					rows={8}
+					rows={1}
 					cols={10}
 					placeholder='Add a title...'
 					defaultValue={item.title}
-					maxLength={50}
+					maxLength={20}
 					required
 					onChange={(e: any) => setEditItem({ ...editItem, title: e.target.value })}
 				></textarea>
@@ -29,23 +28,23 @@ export default function EditForm({ item, index, updateTaskItem }: EditFormProps)
 					cols={10}
 					placeholder='Add a description...'
 					defaultValue={item.description}
-					maxLength={200}
+					maxLength={150}
 					required
 					onChange={(e: any) => setEditItem({ ...editItem, description: e.target.value })}
 				></textarea>
-				<div className='task-footer-editable'>
-					<input
-						type='date'
-						value={moment(editItem.due).format("YYYY-MM-DD")}
-						defaultValue={moment(editItem.due).format("DD-MM-YYYY")}
-						min={now.toJSON().slice(0, 10)}
-						required
-						onChange={(e: any) => setEditItem({ ...editItem, due: e.target.value })}
-					/>
-					<button className='save' onClick={() => updateTaskItem(editItem)}>
-						Save
-					</button>
-				</div>
+			</div>
+			<div className='task-footer-editable'>
+				<input
+					type='date'
+					value={moment(editItem.due).format("YYYY-MM-DD")}
+					defaultValue={moment(editItem.due).format("DD-MM-YYYY")}
+					min={now.toJSON().slice(0, 10)}
+					required
+					onChange={(e: any) => setEditItem({ ...editItem, due: e.target.value })}
+				/>
+				<button className='save' onClick={() => updateTaskItem(editItem)}>
+					Save
+				</button>
 			</div>
 		</div>
 	)

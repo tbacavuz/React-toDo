@@ -1,5 +1,6 @@
 import moment from "moment"
 import TaskItemDto from "../Dtos/TaskItemDto"
+import "./TaskCard.css"
 
 interface TaskCardProps {
 	item: TaskItemDto
@@ -11,7 +12,6 @@ interface TaskCardProps {
 export default function TaskCard({ item, index, deleteTaskItem, toggleEditable }: TaskCardProps) {
 	return (
 		<div key={index} className='task-card'>
-			<span>{item.id}</span>
 			<div className='task-body'>
 				<h4 className='title'>{item.title}</h4>
 				<p className='description'>{item.description}</p>
